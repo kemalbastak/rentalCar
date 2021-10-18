@@ -1,0 +1,24 @@
+version: "3.8"
+   
+services:
+
+  pgdb:
+    image: postgres
+    container_name: pgdb_carzone
+    environment:
+      - POSTGRES_DB=carzone_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password123
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  pgadmin:
+    container_name: pgadmin4_carzone
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: password123
+    ports:
+      - 5050:80
